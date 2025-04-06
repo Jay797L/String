@@ -51,10 +51,10 @@ void *s21_insert(const char *src, const char *str, s21_size_t start_index) {
       s21_size_t sizeStr = srcLen + strLen > start_index + strLen
                                ? srcLen + strLen
                                : start_index + strLen;
-      sizeStr+=1;
+      sizeStr += 1;
       returnValue = calloc(sizeStr, sizeof(char));
       returnValue = s21_memset(returnValue, ' ', sizeStr);
-      returnValue[sizeStr-1] = '\0';
+      returnValue[sizeStr - 1] = '\0';
       returnValue = s21_strncpy(returnValue, src, start_index);
       s21_strncpy(&returnValue[start_index], str, strLen);
       if (start_index < srcLen) {

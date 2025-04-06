@@ -4,7 +4,7 @@ int s21_sprintf(char *str, const char *format, ...) {
   s21_size_t offsetFormat = 0;
   s21_size_t offsetStr = 0;
   s21_size_t lenFormat = 0;
-  lenFormat=s21_strlen(format);
+  lenFormat = s21_strlen(format);
 
   va_list nextParam;
   va_start(nextParam, format);
@@ -16,19 +16,19 @@ int s21_sprintf(char *str, const char *format, ...) {
       if (prot->specifier != -1) {
         char *currentStr = getStr(prot, nextParam);
         // precision
-          s21_size_t strLen = 0;
-          strLen=s21_strlen(currentStr);
-          currentStr = applyPrecision(currentStr, *prot, strLen);
-          // flags
-          strLen = s21_strlen(currentStr);
-          currentStr = applyFlags(currentStr, *prot, strLen);
-          // width
-          strLen = s21_strlen(currentStr);
-          currentStr = applyWidth(currentStr, *prot, strLen);
-          for (s21_size_t i = 0; i < strLen; offsetStr++, i++) {
-            str[offsetStr] = currentStr[i];
-          }
-          free(currentStr);
+        s21_size_t strLen = 0;
+        strLen = s21_strlen(currentStr);
+        currentStr = applyPrecision(currentStr, *prot, strLen);
+        // flags
+        strLen = s21_strlen(currentStr);
+        currentStr = applyFlags(currentStr, *prot, strLen);
+        // width
+        strLen = s21_strlen(currentStr);
+        currentStr = applyWidth(currentStr, *prot, strLen);
+        for (s21_size_t i = 0; i < strLen; offsetStr++, i++) {
+          str[offsetStr] = currentStr[i];
+        }
+        free(currentStr);
       }
       free(prot);
     } else {
@@ -111,7 +111,8 @@ char *applyPrecision(char *str, s21_specifierPrototypeSprintf prot,
   char *returnValue = str;
   if (s21_strchr("du", prot.specifier) != s21_NULL) {
     if (prot.precision > (int)lenStr) {
-      returnValue = s21_realloc(returnValue, (prot.precision + 1) * sizeof(char));
+      returnValue =
+          s21_realloc(returnValue, (prot.precision + 1) * sizeof(char));
       char *temp = calloc(prot.precision + 1, sizeof(char));
       s21_strncpy(temp, returnValue, prot.precision * sizeof(char));
       s21_strncpy(&returnValue[prot.precision - (int)lenStr], temp, lenStr);
@@ -121,7 +122,8 @@ char *applyPrecision(char *str, s21_specifierPrototypeSprintf prot,
     }
   } else if (prot.specifier == 's') {
     if (prot.precision < (int)lenStr && prot.precision != -1) {
-      returnValue = s21_realloc(returnValue, (prot.precision + 1) * sizeof(char));
+      returnValue =
+          s21_realloc(returnValue, (prot.precision + 1) * sizeof(char));
       returnValue[prot.precision] = '\0';
     }
   }
@@ -195,7 +197,7 @@ char *getStr(s21_specifierPrototypeSprintf *prot, va_list nextParam) {
   } else if (prot->specifier == 's') {
     char *temp = va_arg(nextParam, char *);
     s21_size_t lenStr = 0;
-    lenStr=s21_strlen(temp);
+    lenStr = s21_strlen(temp);
     returnValue = calloc(lenStr + 1, sizeof(char));
     s21_strncpy(returnValue, temp, lenStr);
   } else if (prot->specifier == '%') {
@@ -241,7 +243,8 @@ char *doubleToString(s21_specifierPrototypeSprintf *prot, double value) {
       offsetReturnValue++;
     }
   }
-  returnValue = s21_realloc(returnValue, sizeof(char) * (offsetReturnValue+1));
+  returnValue =
+      s21_realloc(returnValue, sizeof(char) * (offsetReturnValue + 1));
   returnValue[offsetReturnValue] = '\0';
   return returnValue;
 }
@@ -267,7 +270,8 @@ char *longIntToString(s21_specifierPrototypeSprintf *prot,
     returnValue[offsetReturnValue] = '0';
     offsetReturnValue++;
   }
-  returnValue = s21_realloc(returnValue, sizeof(char) * (offsetReturnValue+1));
+  returnValue =
+      s21_realloc(returnValue, sizeof(char) * (offsetReturnValue + 1));
   returnValue[offsetReturnValue] = '\0';
   return returnValue;
 }
@@ -280,11 +284,11 @@ void expandString(char *first, char *last) {
   }
 }
 
-void *s21_realloc(void *src, s21_size_t size){
-  char *returnValue=calloc(size, sizeof(char));
-  s21_size_t lenSrc=0;
-  lenSrc=s21_strlen(src);
-  returnValue=s21_memcpy(returnValue, src, size>lenSrc?lenSrc:size);
+void *s21_realloc(void *src, s21_size_t size) {
+  char *returnValue = calloc(size, sizeof(char));
+  s21_size_t lenSrc = 0;
+  lenSrc = s21_strlen(src);
+  returnValue = s21_memcpy(returnValue, src, size > lenSrc ? lenSrc : size);
   free(src);
   return returnValue;
 }
