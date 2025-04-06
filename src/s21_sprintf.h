@@ -32,5 +32,6 @@ char *getStr(s21_specifierPrototypeSprintf *prot, va_list nextParam);
 char *doubleToString(s21_specifierPrototypeSprintf *prot, double value);
 char *longIntToString(s21_specifierPrototypeSprintf *prot, long long int value);
 void expandString(char *first, char *last);
+void *s21_realloc(void *src, s21_size_t size);
 
 #endif
