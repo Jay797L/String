@@ -8,6 +8,9 @@ START_TEST(test_to_lower1) {
   char *result = s21_to_lower(str);
   ck_assert_ptr_ne(result, s21_NULL);
   ck_assert_str_eq(result, "hello world!");
+  if(result!=s21_NULL){
+    free(result);
+  }
 }
 END_TEST
 
@@ -16,6 +19,9 @@ START_TEST(test_to_lower2) {
   char *result = s21_to_lower(str);
   ck_assert_ptr_ne(result, s21_NULL);
   ck_assert_str_eq(result, "hello world!");
+  if(result!=s21_NULL){
+    free(result);
+  }
 }
 END_TEST
 
@@ -24,6 +30,9 @@ START_TEST(test_to_lower3) {
   char *result = s21_to_lower(str);
   ck_assert_ptr_ne(result, s21_NULL);
   ck_assert_str_eq(result, "hello world!");
+  if(result!=s21_NULL){
+    free(result);
+  }
 }
 END_TEST
 
@@ -32,6 +41,9 @@ START_TEST(test_to_lower4) {
   char *result = s21_to_lower(str);
   ck_assert_ptr_ne(result, s21_NULL);
   ck_assert_str_eq(result, "hello world!");
+  if(result!=s21_NULL){
+    free(result);
+  }
 }
 END_TEST
 
@@ -39,12 +51,18 @@ START_TEST(test_to_lower_empty) {
   char *input = "";
   char *result = s21_to_lower(input);
   ck_assert_ptr_ne(result, s21_NULL);
+  if(result!=s21_NULL){
+    free(result);
+  }
 }
 END_TEST
 
 START_TEST(test_to_lower_null) {
   char *result = s21_to_lower(s21_NULL);
   ck_assert_ptr_eq(result, s21_NULL);
+  if(result!=s21_NULL){
+    free(result);
+  }
 }
 END_TEST
 
@@ -53,6 +71,9 @@ START_TEST(test_to_upper1) {
   char *result = s21_to_upper(str);
   ck_assert_ptr_ne(result, s21_NULL);
   ck_assert_str_eq(result, "HELLO WORLD!");
+  if(result!=s21_NULL){
+    free(result);
+  }
 }
 END_TEST
 
@@ -61,6 +82,9 @@ START_TEST(test_to_upper2) {
   char *result = s21_to_upper(str);
   ck_assert_ptr_ne(result, s21_NULL);
   ck_assert_str_eq(result, "HELLO WORLD!");
+  if(result!=s21_NULL){
+    free(result);
+  }
 }
 END_TEST
 
@@ -69,6 +93,9 @@ START_TEST(test_to_upper3) {
   char *result = s21_to_upper(str);
   ck_assert_ptr_ne(result, s21_NULL);
   ck_assert_str_eq(result, "HELLO WORLD!");
+  if(result!=s21_NULL){
+    free(result);
+  }
 }
 END_TEST
 
@@ -77,6 +104,9 @@ START_TEST(test_to_upper4) {
   char *result = s21_to_upper(str);
   ck_assert_ptr_ne(result, s21_NULL);
   ck_assert_str_eq(result, "HELLO WORLD!");
+  if(result!=s21_NULL){
+    free(result);
+  }
 }
 END_TEST
 
@@ -84,6 +114,9 @@ START_TEST(test_to_upper_empty) {
   char str[] = "";
   char *result = s21_to_upper(str);
   ck_assert_ptr_ne(result, s21_NULL);
+  if(result!=s21_NULL){
+    free(result);
+  }
 }
 END_TEST
 
@@ -91,6 +124,9 @@ START_TEST(test_to_upper_null) {
   char *str = s21_NULL;
   char *result = s21_to_upper(str);
   ck_assert_ptr_eq(result, s21_NULL);
+  if(result!=s21_NULL){
+    free(result);
+  }
 }
 END_TEST
 
@@ -101,6 +137,9 @@ START_TEST(test_insert1) {
   char *result = s21_insert(src, str, start_index);
   ck_assert_ptr_ne(result, s21_NULL);
   ck_assert_str_eq(result, " HelloWorld!");
+  if(result!=s21_NULL){
+    free(result);
+  }
 }
 END_TEST
 
@@ -111,6 +150,9 @@ START_TEST(test_insert2) {
   char *result = s21_insert(src, str, start_index);
   ck_assert_ptr_ne(result, s21_NULL);
   ck_assert_str_eq(result, "Hello World!");
+  if(result!=s21_NULL){
+    free(result);
+  }
 }
 END_TEST
 
@@ -121,6 +163,9 @@ START_TEST(test_insert3) {
   char *result = s21_insert(src, str, start_index);
   ck_assert_ptr_ne(result, s21_NULL);
   ck_assert_str_eq(result, "HelloWorld! ");
+  if(result!=s21_NULL){
+    free(result);
+  }
 }
 END_TEST
 
@@ -131,6 +176,9 @@ START_TEST(test_insert4) {
   char *result = s21_insert(src, str, start_index);
   ck_assert_ptr_ne(result, s21_NULL);
   ck_assert_str_eq(result, "Maybe, HelloWorld!");
+  if(result!=s21_NULL){
+    free(result);
+  }
 }
 END_TEST
 
@@ -141,6 +189,9 @@ START_TEST(test_insert5) {
   char *result = s21_insert(src, str, start_index);
   ck_assert_ptr_ne(result, s21_NULL);
   ck_assert_str_eq(result, "Only 5 people say me HelloWorld!");
+  if(result!=s21_NULL){
+    free(result);
+  }
 }
 END_TEST
 
@@ -151,6 +202,9 @@ START_TEST(test_insert6) {
   char *result = s21_insert(src, str, start_index);
   ck_assert_ptr_ne(result, s21_NULL);
   ck_assert_str_eq(result, "HelloWorld, or goodbye?!");
+  if(result!=s21_NULL){
+    free(result);
+  }
 }
 END_TEST
 
@@ -160,6 +214,9 @@ START_TEST(test_insert_null_src) {
   s21_size_t start_index = 10;
   char *result = s21_insert(src, str, start_index);
   ck_assert_ptr_eq(result, s21_NULL);
+  if(result!=s21_NULL){
+    free(result);
+  }
 }
 END_TEST
 
@@ -169,6 +226,9 @@ START_TEST(test_insert_null_str) {
   s21_size_t start_index = 10;
   char *result = s21_insert(src, str, start_index);
   ck_assert_ptr_eq(result, s21_NULL);
+  if(result!=s21_NULL){
+    free(result);
+  }
 }
 END_TEST
 
@@ -178,6 +238,9 @@ START_TEST(test_insert_start_index_out) {
   s21_size_t start_index = 20;
   char *result = s21_insert(src, str, start_index);
   ck_assert_ptr_eq(result, s21_NULL);
+  if(result!=s21_NULL){
+    free(result);
+  }
 }
 END_TEST
 
@@ -188,6 +251,9 @@ START_TEST(test_insert_empty1) {
   char *result = s21_insert(src, str, start_index);
   ck_assert_ptr_ne(result, s21_NULL);
   ck_assert_str_eq(result, "NULL");
+  if(result!=s21_NULL){
+    free(result);
+  }
 }
 END_TEST
 
@@ -198,6 +264,9 @@ START_TEST(test_insert_empty2) {
   char *result = s21_insert(src, str, start_index);
   ck_assert_ptr_ne(result, s21_NULL);
   ck_assert_str_eq(result, "NULL");
+  if(result!=s21_NULL){
+    free(result);
+  }
 }
 END_TEST
 
@@ -207,6 +276,9 @@ START_TEST(test_trim1) {
   char *result = s21_trim(src, trim_chars);
   ck_assert_ptr_ne(result, s21_NULL);
   ck_assert_str_eq(result, "TRIM THIS!");
+  if(result!=s21_NULL){
+    free(result);
+  }
 }
 END_TEST
 
@@ -216,6 +288,9 @@ START_TEST(test_trim2) {
   char *result = s21_trim(src, trim_chars);
   ck_assert_ptr_ne(result, s21_NULL);
   ck_assert_str_eq(result, "RIM THIS!");
+  if(result!=s21_NULL){
+    free(result);
+  }
 }
 END_TEST
 
@@ -225,6 +300,9 @@ START_TEST(test_trim3) {
   char *result = s21_trim(src, trim_chars);
   ck_assert_ptr_ne(result, s21_NULL);
   ck_assert_str_eq(result, "1TRIM THIS");
+  if(result!=s21_NULL){
+    free(result);
+  }
 }
 END_TEST
 
@@ -234,6 +312,9 @@ START_TEST(test_trim4) {
   char *result = s21_trim(src, trim_chars);
   ck_assert_ptr_ne(result, s21_NULL);
   ck_assert_str_eq(result, "1TRIM THIS!1");
+  if(result!=s21_NULL){
+    free(result);
+  }
 }
 END_TEST
 
@@ -243,6 +324,9 @@ START_TEST(test_trim_empty1) {
   char *result = s21_trim(src, trim_chars);
   ck_assert_ptr_ne(result, s21_NULL);
   ck_assert_str_eq(result, "1TRIM THIS!1");
+  if(result!=s21_NULL){
+    free(result);
+  }
 }
 END_TEST
 
@@ -251,6 +335,9 @@ START_TEST(test_trim_null_src) {
   char trim_chars[] = "123";
   char *result = s21_trim(src, trim_chars);
   ck_assert_ptr_eq(result, s21_NULL);
+  if(result!=s21_NULL){
+    free(result);
+  }
 }
 END_TEST
 
@@ -260,6 +347,9 @@ START_TEST(test_trim_null_trim_chars) {
   char *result = s21_trim(src, trim_chars);
   ck_assert_ptr_ne(result, s21_NULL);
   ck_assert_str_eq(result, "123");
+  if(result!=s21_NULL){
+    free(result);
+  }
 }
 END_TEST
 
