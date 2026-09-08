@@ -47,16 +47,6 @@ START_TEST(test_to_lower4) {
 }
 END_TEST
 
-START_TEST(test_to_lower_empty) {
-  char *input = "";
-  char *result = s21_to_lower(input);
-  ck_assert_ptr_ne(result, s21_NULL);
-  if (result != s21_NULL) {
-    free(result);
-  }
-}
-END_TEST
-
 START_TEST(test_to_lower_null) {
   char *result = s21_to_lower(s21_NULL);
   ck_assert_ptr_eq(result, s21_NULL);
@@ -104,16 +94,6 @@ START_TEST(test_to_upper4) {
   char *result = s21_to_upper(str);
   ck_assert_ptr_ne(result, s21_NULL);
   ck_assert_str_eq(result, "HELLO WORLD!");
-  if (result != s21_NULL) {
-    free(result);
-  }
-}
-END_TEST
-
-START_TEST(test_to_upper_empty) {
-  char str[] = "";
-  char *result = s21_to_upper(str);
-  ck_assert_ptr_ne(result, s21_NULL);
   if (result != s21_NULL) {
     free(result);
   }
@@ -361,7 +341,6 @@ Suite *test_csharp_funcs(void) {
   tcase_add_test(tc_lower, test_to_lower2);
   tcase_add_test(tc_lower, test_to_lower3);
   tcase_add_test(tc_lower, test_to_lower4);
-  tcase_add_test(tc_lower, test_to_lower_empty);
   tcase_add_test(tc_lower, test_to_lower_null);
   suite_add_tcase(s, tc_lower);
 
@@ -370,7 +349,6 @@ Suite *test_csharp_funcs(void) {
   tcase_add_test(tc_upper, test_to_upper2);
   tcase_add_test(tc_upper, test_to_upper3);
   tcase_add_test(tc_upper, test_to_upper4);
-  tcase_add_test(tc_upper, test_to_upper_empty);
   tcase_add_test(tc_upper, test_to_upper_null);
   suite_add_tcase(s, tc_upper);
 

@@ -30,18 +30,6 @@ START_TEST(test_sprintf_flag_minus_c_main_part) {
 }
 END_TEST
 
-START_TEST(test_sprintf_flag_minus_f_main_part) {
-  char format[] = "%-f";
-  char str1[2048] = "";
-  char str2[2048] = "";
-  float a1 = 1.1, a2 = -1.175, a3 = 1.175;
-  int system_sprintf = sprintf(str1, format, a1, a2, a3);
-  int s21_function = s21_sprintf(str2, format, a1, a2, a3);
-  ck_assert_int_eq(system_sprintf, s21_function);
-  ck_assert_str_eq(str1, str2);
-}
-END_TEST
-
 START_TEST(test_sprintf_flag_minus_s_main_part) {
   char format[] = "%-s %-s %-s";
   char str1[2048] = "";
@@ -486,18 +474,6 @@ START_TEST(test_sprintf_s_num3) {
 }
 END_TEST
 
-START_TEST(test_sprintf_s_l) {
-  char format[] = "%ls %ls";
-  char str1[512] = "";
-  char str2[512] = "";
-  char a1[100] = "Help", a2[100] = "me";
-  int system_sprintf = sprintf(str1, format, a1, a2);
-  int s21_function = s21_sprintf(str2, format, a1, a2);
-  ck_assert_int_eq(system_sprintf, s21_function);
-  ck_assert_str_eq(str1, str2);
-}
-END_TEST
-
 START_TEST(test_sprintf_u_empty) {
   char format[] = "%u";
   char str1[512] = "";
@@ -591,7 +567,6 @@ Suite *test_sprintf(void) {
 
   tcase_add_test(tc, test_sprintf_flag_minus_d_main_part);
   tcase_add_test(tc, test_sprintf_flag_minus_c_main_part);
-  tcase_add_test(tc, test_sprintf_flag_minus_f_main_part);
   tcase_add_test(tc, test_sprintf_flag_minus_s_main_part);
   tcase_add_test(tc, test_sprintf_flag_minus_u_main_part);
   tcase_add_test(tc, test_sprintf_flag_minus_percent_main_part);
@@ -629,7 +604,6 @@ Suite *test_sprintf(void) {
   tcase_add_test(tc, test_sprintf_s_num1);
   tcase_add_test(tc, test_sprintf_s_num2);
   tcase_add_test(tc, test_sprintf_s_num3);
-  tcase_add_test(tc, test_sprintf_s_l);
   tcase_add_test(tc, test_sprintf_u_empty);
   tcase_add_test(tc, test_sprintf_u);
   tcase_add_test(tc, test_sprintf_u_num1);

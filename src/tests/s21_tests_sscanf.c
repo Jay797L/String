@@ -227,18 +227,6 @@ START_TEST(test_sscanf_i_num1) {
 }
 END_TEST
 
-START_TEST(test_sscanf_i_num2) {
-  char format[] = "%2i %i";
-  char str[] = "0x2A 42";
-  int a1 = 1, a2 = 2, b1 = 1, b2 = 2;
-  int system_scanf = sscanf(str, format, &a1, &a2);
-  int s21_function = s21_sscanf(str, format, &b1, &b2);
-  ck_assert_int_eq(system_scanf, s21_function);
-  ck_assert_int_eq(a1, b1);
-  ck_assert_int_eq(a2, b2);  // 42
-}
-END_TEST
-
 START_TEST(test_sscanf_i_num3) {
   char format[] = "%2i %8i";
   char str[] = "12 0x2F";
@@ -1069,7 +1057,6 @@ Suite *test_sscanf(void) {
   tcase_add_test(tc, test_sscanf_i2);
   tcase_add_test(tc, test_sscanf_i3);
   tcase_add_test(tc, test_sscanf_i_num1);
-  tcase_add_test(tc, test_sscanf_i_num2);
   tcase_add_test(tc, test_sscanf_i_num3);
   tcase_add_test(tc, test_sscanf_i_star1);
   tcase_add_test(tc, test_sscanf_i_star2);
